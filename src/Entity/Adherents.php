@@ -97,6 +97,11 @@ class Adherents
      */
     private $Observation;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -290,6 +295,18 @@ class Adherents
     public function setObservation(string $Observation): self
     {
         $this->Observation = $Observation;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

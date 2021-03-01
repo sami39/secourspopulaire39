@@ -1,23 +1,30 @@
+ {% extends 'base.html.twig' %}
+ 
+{% block title %}fiche Adherents{% endblock %}
+
+{% block body %}
+ <div class="conatainer">
+ <div class="row">
  <table class="table table-dark">
      <thead class="thead-dark">
          <tr>
-             <th scope="col">Nom</th>
+             <th scope="col-12">Nom</th>
 
-             <th scope="col">Prenom</th>
-             <th scope="col">dossier</th>
-             <th scope="col">FreqenceMensuelle</th>
-             <th scope="col">NbPassage</th>
-             <th scope="col">Date</th>
-             <th scope="col">Adulte</th>
-             <th scope="col">Enfant</th>
-             <th scope="col">Colis</th>
-             <th scope="col">Telephone</th>
-             <th scope="col">Payé</th>
-             <th scope="col">hygiéne</th>
-             <th scope="col">Lessive</th>
-             <th scope="col">Couches</th>
-             <th scope="col">Année premiere accueil</th>
-             <th scope="col">Observation</th>
+             <th scope="col-12">Prenom</th>
+             <th scope="col-12">dossier</th>
+             <th scope="col-12">FreqenceMensuelle</th>
+             <th scope="col-12">NbPassage</th>
+             <th scope="col-12">Date</th>
+             <th scope="col-12">Adulte</th>
+             <th scope="col-12">Enfant</th>
+             <th scope="col-12">Colis</th>
+             <th scope="col-12">Telephone</th>
+             <th scope="col-12">Payé</th>
+             <th scope="col-12">hygiéne</th>
+             <th scope="col-12">Lessive</th>
+             <th scope="col-12">Couches</th>
+             <th scope="col-12">Année premiere accueil</th>
+             <th scope="col-12">Observation</th>
 
 
          </tr>
@@ -33,7 +40,7 @@
      <td>{{ Adherent.dossier}}</td>
      <td>{{ Adherent.FreqenceMensuelle}}</td>
      <td>{{ Adherent.NbPassage}}</td>
-     <td>{{ Adherent.Date}}</td>
+    <td>{{ Adherent.Date|date('Y-m-d') }} </td>
      <td>{{ Adherent.Adulte}}</td>
      <td>{{ Adherent.Enfant}}</td>
      <td>{{ Adherent.Colis}}</td>
@@ -46,14 +53,12 @@
         <td>{{ Adherent.Observation}}</td>
 
 
-     <td>{{ projet.datedemande|date('Y-m-d') }} </td>
-     <td>{{ projet.daterelance|date('Y-m-d') }} </td>
-     <td>{{ projet.dateentretient|date('Y-m-d') }}</td>
+      
      <td
-         style="{% if  projet.statut == 'Relancée' %} background-color: #ffd97d; {% elseif  projet.statut == 'Positif' %} background-color: #60d394; {% elseif  projet.statut == 'Négatif' %} background-color: #ee6055; {% endif %}">
+         style="{% if  Adherent.statut == 'Relancée' %} background-color: #ffd97d; {% elseif  projet.statut == 'Positif' %} background-color: #60d394; {% elseif  projet.statut == 'Négatif' %} background-color: #ee6055; {% endif %}">
          {{ projet.statut }}</td>
-     <td><a href="{{ path('editcandidature', {'id' : projet.id}) }}" class="btn btn-warning">modifier</a></td>
-     <td><a href="{{ path('delete_candidature', {'id' : projet.id}) }}" class="btn btn-danger">suprimer</a></td>
+     <td><a href="#" class="btn btn-warning">modifier</a></td>
+     <td><a href="#" class="btn btn-danger">suprimer</a></td>
 
 
      </tr>
@@ -68,7 +73,8 @@
  </table>
 
 
-
+</div>
+</div>
 
 
  {% endblock %}
