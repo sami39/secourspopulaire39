@@ -38,25 +38,47 @@ class AdminController extends AbstractController
   /**
      * @Route("/AjoutAdhrent", name="AjoutAdhrent")
      */
-    public function new(Request $request,AdherentsRepository $AdherentsRepository){
+    public function AjoutAdhrent(Request $request,AdherentsRepository $adherentsRepository){
         $projects= new Adherents();
         $form =$this->createForm(AdherentType::class,$projects);
         $form->handleRequest($request);
-        $Adherents=$AdherentsRepository->findAll();
+        $projets= $adherentsRepository->findAll();
         if($form->isSubmitted() && $form->isValid()){
        $entityManager =$this->getDoctrine()->getManager();
-       
-       
-       
-       $entityManager->persist($Adherents);
+       $entityManager->persist($projects);
        $entityManager->flush();
-       return $this->redirect($request->getUri());
+       return $this->redirectToRoute('home');
+       
         }
         return $this->render('admin/AjoutAdhrent.html.twig',[
-          'form'=>$form->createView(),
-          'projets'=>$Adherents
+          'form'=>$form->createView()
+          
+           
         ]);
       
       }
+      
+  /**
+     * @Route("/editAdherent", name="editAdherent")
+     */
+    
+    public function edit(Request $request, Adherents $projects):Response{
+       
+      $entityManager = $this->getDoctrine()->getManager();
+       
+       
+      $form =$this->createForm(AdherentType::class,$projects);
+      $form->handleRequest($request);
+      if($form->isSubmitted() && $form->isValid()){
+      
+     $entityManager->persist($projects);
+     $entityManager->flush();
+     return $this->redirect($request->getUri());
+     
+
+      }
+      return $this->render('admin/edit.html.twig',[
+        'editForm'=>$form->createView()]);
+     }
 
 }

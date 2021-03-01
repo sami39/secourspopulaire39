@@ -25,6 +25,8 @@
              <th scope="col-12">Couches</th>
              <th scope="col-12">Année premiere accueil</th>
              <th scope="col-12">Observation</th>
+                <th scope="col-12">status</th>
+                
 
 
          </tr>
@@ -49,16 +51,19 @@
      <td>{{ Adherent.hygiene}}</td>
      <td>{{ Adherent.Lessive}}</td>
       <td>{{ Adherent.Couches}}</td>
-       <td>{{ Adherent.Annee}}</td>
+      
+       <td>{{ Adherent.Annee|date('Y-m-d') }} </td>
         <td>{{ Adherent.Observation}}</td>
 
 
       
-     <td
-         style="{% if  Adherent.statut == 'Relancée' %} background-color: #ffd97d; {% elseif  projet.statut == 'Positif' %} background-color: #60d394; {% elseif  projet.statut == 'Négatif' %} background-color: #ee6055; {% endif %}">
-         {{ projet.statut }}</td>
-     <td><a href="#" class="btn btn-warning">modifier</a></td>
-     <td><a href="#" class="btn btn-danger">suprimer</a></td>
+     <td>{{  Adherent.status }}</td>
+     <td> <a href="{{ path ('editAdherent', {'id' : Adherent.id}) }}" class="btn btn-warning">metre a jour</a></td>
+     <td><a href=" " class="btn btn-danger">suprimer</a></td>
+     
+         
+         
+      
 
 
      </tr>

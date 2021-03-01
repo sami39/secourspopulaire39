@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Adherents;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -28,6 +29,7 @@ class AdherentType extends AbstractType
             ->add('Couches')
             ->add('Annee')
             ->add('Observation')
+            ->add('status')
         ;
     }
 
