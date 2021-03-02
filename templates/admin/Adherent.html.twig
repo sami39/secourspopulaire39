@@ -59,7 +59,7 @@
       
      <td>{{  Adherent.status }}</td>
      <td> <a href="{{ path ('editAdherent', {'id' : Adherent.id}) }}" class="btn btn-warning">metre a jour</a></td>
-     <td><a href=" " class="btn btn-danger">suprimer</a></td>
+     <td><a href=" {{ path ('delete_adherent', {'id' : Adherent.id}) }} " class="btn btn-danger">suprimer</a></td>
      
          
          

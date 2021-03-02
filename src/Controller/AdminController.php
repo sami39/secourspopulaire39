@@ -35,7 +35,7 @@ class AdminController extends AbstractController
     }
 
 
-  /**
+    /**
      * @Route("/AjoutAdhrent", name="AjoutAdhrent")
      */
     public function AjoutAdhrent(Request $request,AdherentsRepository $adherentsRepository){
@@ -59,7 +59,7 @@ class AdminController extends AbstractController
       }
       
   /**
-     * @Route("/editAdherent", name="editAdherent")
+     * @Route("/editAdherent/{id}", name="editAdherent")
      */
     
     public function edit(Request $request, Adherents $projects):Response{
@@ -73,12 +73,35 @@ class AdminController extends AbstractController
       
      $entityManager->persist($projects);
      $entityManager->flush();
-     return $this->redirect($request->getUri());
+     return $this->redirectToRoute('home');
      
 
       }
       return $this->render('admin/edit.html.twig',[
         'editForm'=>$form->createView()]);
      }
+
+
+
+      /**
+ * @Route("deleteadherent/{id}", name="delete_adherent")
+ */
+public function delete(Request $request, Adherents $projects):Response{
+   
+  $entityManager = $this->getDoctrine()->getManager();
+   
+   
+  
+   
+  
+ $entityManager->remove($projects);
+ $entityManager->flush();
+ return $this->redirectToRoute('home');
+ 
+
+  
+  
+}
+
 
 }
