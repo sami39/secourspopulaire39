@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/", name="admin")
      */
     public function index(): Response
     {
@@ -24,7 +24,7 @@ class AdminController extends AbstractController
 
     
     /**
-     * @Route("/", name="home")
+     * @Route("/AficheAdhrent", name="home")
      */
     public function AficheAdhrent(AdherentsRepository $AdherentsRepository): Response
     { $Adherents=$AdherentsRepository->findAll();
