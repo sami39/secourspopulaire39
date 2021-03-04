@@ -33,7 +33,7 @@ class Adherents
     private $dossier;
 
     /**
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="string")
      */
     private $FreqenceMensuelle;
 
